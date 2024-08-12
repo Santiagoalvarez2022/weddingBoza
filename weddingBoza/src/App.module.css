@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.containerPage{
+  height: 100vh;
+  display: flex;
+  overflow-y: scroll;
+
+}
+
+.pageOne{ 
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2em;
+  background: #000;
+  background-image: url('./assets/weddingBoza.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: aliceblue;
+
+
+}
+
+.title{
+  padding-top: 12vh;
+  font-family: "Allura", cursive;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: .2em;
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.names{
+  filter: drop-shadow(2px 2px 1em rgba(170, 170, 170, 0.826));
+  text-shadow: #000 2px 2px;
+} 

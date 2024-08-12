@@ -1,0 +1,50 @@
+@import url('https://fonts.go ogleapis.com/css2?family=Allura&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.container{
+    color: antiquewhite;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: .5em; 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.date{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5em;
+}
+
+.boxDate{
+    background: rgba(0, 0, 0, 0.91);
+    box-sizing: border-box;
+    text-align: center;
+    padding-inline: 1em;
+    padding-top: .5em;
+    padding-bottom: 1em;
+    border-radius: .5em;
+}
+
+
+.btn{
+    background: rgba(0, 0, 0, 0.91);
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em ;
+    border-radius: .5em;
+
+}
+
+
+.num{
+    font-size: 2.2em;
+}
+
+.text, .num{
+    text-align: center;
+
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate">
+
+    <link rel="icon" type="image/svg+xml" href="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valen y Alex</title>
+    <style>
+      /* Añadir estilos aquí si es necesario */
+      #only-mobile-message {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 1.5em;
+        text-align: center;
+      }
+
+      body.not-mobile #only-mobile-message {
+        display: block;
+      }
+
+      body.not-mobile #root {
+        display: none;
+      }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        if (/android/i.test(userAgent) || /iPhone/.test(userAgent) && !window.MSStream) {
+          document.body.classList.add('mobile');
+        } else {
+          document.body.classList.add('not-mobile');
+        }
+      });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const metaTag = document.createElement('meta');
+      metaTag.name = 'google';
+      metaTag.content = 'notranslate';
+      document.head.appendChild(metaTag);
+    });
+    </script>
+  </head>
+  <body>
+    <div id="only-mobile-message">Esta pagina fue diseñada solo para telefonos celulares</div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
