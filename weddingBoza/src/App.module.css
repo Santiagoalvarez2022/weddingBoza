@@ -6,8 +6,8 @@
   margin: 0;
 }
 .containerPage{
-  height: 100vh;
   display: flex;
+  flex-direction: column;
   overflow-y: scroll;
 
 }
@@ -27,7 +27,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   color: aliceblue;
-
+  border: solid red 2px;
 
 }
 
@@ -39,9 +39,15 @@
   letter-spacing: .2em;
   font-size: 1.8em;
   text-align: center;
+  color: white;
 }
 
 .names{
   filter: drop-shadow(2px 2px 1em rgba(170, 170, 170, 0.826));
   text-shadow: #000 2px 2px;
 } 
+
+.pageTwo{
+  border: solid red 2px;
+  height: 100vh;
+}

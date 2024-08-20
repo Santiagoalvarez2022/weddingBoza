@@ -2,7 +2,7 @@
 
 
 .container{
-    color: antiquewhite;
+    color: white;
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: .5em; 
@@ -27,9 +27,14 @@
     border-radius: .5em;
 }
 
-
+.giftList{
+    color: white;
+}
 .btn{
     background: rgba(0, 0, 0, 0.91);
+    text-decoration: none;
+    color: white;
+    
     height: 70%;
     display: flex;
     justify-content: center;

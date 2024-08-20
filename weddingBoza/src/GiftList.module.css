@@ -1,0 +1,130 @@
+.pageGift{
+    height: 100vh;
+    background:#15324c ;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+} 
+
+
+.msg, .alias{
+    color: #fff;
+    font-style: italic;
+    text-align: center;
+    padding: 1em;
+
+}
+
+.msg{
+    font-size: 1em;
+    margin-top: 5vh;
+}
+.alias{
+    margin-bottom: 1vh;
+    margin-top: 3vh;
+    font-size: 1.2em;
+}
+
+.listGift{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    padding-inline: 3em; 
+    padding-top: 1em;
+}
+
+
+
+
+
+
+
+.item {
+    width: 100%;
+    display: flex;
+}
+
+.line{
+    width: 40%;
+    height: 2px;
+    background-color: #ffffff;
+    
+}
+.left {
+    flex-direction: row;
+    
+}
+  
+.right {
+    flex-direction: row-reverse;
+}
+
+.gift{
+    height: 10vh;
+    width: 100%;
+    color: #ffffff;  
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    flex-direction: row-reverse;
+
+} 
+.imgRight,.imgLeft, .nameLeft,.nameRight{
+    display: flex;
+    justify-content: center;
+}
+
+.imgRight{
+    align-items: center;
+    border-left:#ffffff solid .05em  ;
+    box-sizing: border-box;
+    animation: beat 1s infinite;
+    background-size: 6.5vh;
+}
+
+.imgLeft{
+    border-right:#ffffff solid .05em ;
+    align-items: center;
+    box-sizing: border-box;
+    background-size: 6.5vh;
+    animation: beat 1s infinite;
+} 
+
+.nameLeft, .nameRight{
+    text-align: center;
+    font-size: 1em;
+    overflow: hidden; /* Oculta el desbordamiento del texto */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos (...)  al final del texto truncado */
+    direction: ltr;
+}
+
+.nameRight{
+    border-right:#ffffff solid .05em ;
+
+}
+.nameLeft{
+    border-left:#ffffff solid .05em ;
+    
+}
+
+.textBox{
+    border-bottom: #ffffff solid .05em;
+    height: 50%;
+    display: flex;
+    width: 100%;
+    align-items: end;
+    justify-content: center;
+}
+
+
+@keyframes beat {
+    0%, 100% {
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.289));
+
+    }
+    50% {
+        filter: drop-shadow(0 0 .3em rgba(255, 255, 255, 0.400));
+
+    }
+}

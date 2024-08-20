@@ -1,12 +1,12 @@
 import {useState,useEffect} from 'react'
 import style from './Chronometer.module.css'
+import { Link } from 'react-router-dom';
 
 export default function Chronometer() {
 
     const targetDate = new Date('November 22, 2024 09:00:00').getTime();
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
 
-    console.log(targetDate);
     useEffect(() => {
         // Función para calcular el tiempo restante
         const calculateTimeLeft = () => {
@@ -34,7 +34,6 @@ export default function Chronometer() {
         return () => clearInterval(intervalId);
       }, [targetDate]);
     
-console.log(timeLeft);
  
   return (
     <div className={style.container}>
@@ -54,7 +53,9 @@ console.log(timeLeft);
             </div>
         </div>
         <div className={style.giftList}>
-           <div className={style.btn}> Lista de Deseos</div> 
+            <Link to={'/list'}>
+              <div className={style.btn}> Lista de deseos</div> 
+            </Link>
         </div>
 
     </div>

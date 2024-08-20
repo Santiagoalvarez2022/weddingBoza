@@ -13,7 +13,9 @@ function App() {
           <h1 className={style.names}>Valen y Alex</h1>
         </div>
         <Chronometer />
+        
       </div>
+     
     </div>
   )
 }
