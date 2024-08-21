@@ -1,12 +1,11 @@
-@import url('https://fonts.go ogleapis.com/css2?family=Allura&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
 
 .container{
     color: white;
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: .5em; 
-    font-family: "Montserrat", sans-serif;
+    font-family: "Bodoni Moda SC", serif;
     font-optical-sizing: auto;
     font-style: normal;
 }

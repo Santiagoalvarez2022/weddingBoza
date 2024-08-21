@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+
 .pageGift{
     height: 100vh;
     background:#15324c ;
@@ -20,28 +22,39 @@
     background-image: url('./assets/items_img/arrrowback.png');
     background-position: center center;
     background-size: contain;
+    background-repeat: no-repeat;
+
 }
 
-.msg, .alias{
+.msg, .alias, .alias_{
     color: #fff;
-    font-style: italic;
     text-align: center;
     padding: 1em;
-
+    font-family: "Bodoni Moda SC", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .msg{
     font-size: 1em;
+
 }
 
 
+
 .alias{
+
     margin-top: 3vh;
     font-size: 1.2em;
 }
 
+.alias_{
+    padding: 0;
+    font-weight: 900; 
+}
+
 .listGift{
-    height: 67vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,10 +63,6 @@
     padding-top: 1em;
 } 
  
-
-
-
-
 
 
 .item {
@@ -129,3 +138,4 @@
     align-items: end;
     justify-content: center;
 }
+

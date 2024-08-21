@@ -46,21 +46,30 @@ export default function GiftList() {
     const [itemSelected,setItemSelected] = useState({})
     /*obtener datos para le modal */
     /*abrir y cerrar el modal */
+    /* */
+    useEffect(()=>{
+        GET_LIST(setList)
+    },[])
+
+        console.log('lista de regalo en componente', list);
+        
+
+
     const handlerOpenModal = (item) =>{
         setItemSelected(item)
 
         setOpen(true)
     }
 
+
+
     const handlerCloseModal = () =>{
         setItemSelected({})
-
+        GET_LIST(setList)
+        
         setOpen(false)
     }
-
-    useEffect(()=>{
-        GET_LIST(setList)
-    },[])
+    
     
     if (!state) {
         return <Loader /> 
@@ -83,7 +92,8 @@ export default function GiftList() {
                 }) : "cargando"
             }
         </div>
-        <p className={style.alias}>alias: <br /> "Casamiento.vya"</p>
+        <p className={style.alias}>En caso de no haber selecionado ningun regalo te dejamos nuestro alias: </p> 
+        <p className={style.alias_}>"Casamiento.vya"</p>
 
     </div>
   )

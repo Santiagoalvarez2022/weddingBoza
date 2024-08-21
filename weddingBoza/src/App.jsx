@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import style from './App.module.css'
-import Chronometer from './components/Chronometer/Chronometer'
+import Chronometer from  './components/Chronometer/Chronometer'
 
 function App() {
 
