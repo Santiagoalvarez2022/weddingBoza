@@ -27,7 +27,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   color: aliceblue;
-  border: solid red 2px;
 
 }
 
@@ -48,6 +47,5 @@
 } 
 
 .pageTwo{
-  border: solid red 2px;
   height: 100vh;
 }

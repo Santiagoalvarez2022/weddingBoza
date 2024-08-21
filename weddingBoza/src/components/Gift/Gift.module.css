@@ -1,0 +1,78 @@
+.modalOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.724);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1em;
+    box-sizing: border-box;
+    color: white;
+}
+
+.modalContent{
+    background: #15324c;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding: 2em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 2em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4em;
+}
+
+
+.containerTitle{
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}  
+
+.iconGift{
+    width:  10em;
+    height: 10em;
+    background-size: contain;
+
+}
+.nameItem{
+    font-size: 2em;
+    font-style: italic;
+
+}
+.text{
+    font-size: 1.5em;
+    font-weight: 500;
+    font-style: italic;
+
+}
+.formInput{
+    width: 100%;
+    height: 3em;   
+    display: flex;
+    align-items: center;
+}
+.inputName{
+    height: 100%;
+    width:70%;
+    border-radius: 2em 0 0 2em;
+    padding-inline-start: 1em;
+
+}
+.sendBtn{
+    background: #2a2a2a;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 0 2em 2em 0;
+}

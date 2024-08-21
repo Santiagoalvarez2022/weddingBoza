@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import GiftList from './GiftList.jsx';
+import Gift from './components/Gift/Gift.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       <GiftList />
     ),
   },
+ 
 ]);
 
 createRoot(document.getElementById('root')).render(

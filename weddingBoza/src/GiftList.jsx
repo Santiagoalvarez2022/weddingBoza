@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Loader from './components/Loader'
 import style from './GiftList.module.css'
 import { GET_LIST } from './services/getItems'
-import tv from './assets/items_img/tv.svg'
 import regalo from './assets/items_img/regalo.svg'
 import {Link} from 'react-router-dom'
+//modal gift
+import Gift from './components/Gift/Gift'
 
-const Item = ({orentation,element}) =>{
+const Item = ({orentation,element,handlerOpenModal}) =>{
     const bg_img = {
         backgroundPosition: 'center center', // Añadí 'center' dos veces para asegurar un centrado completo
         backgroundRepeat: 'no-repeat',
@@ -23,12 +24,12 @@ const Item = ({orentation,element}) =>{
                         <p className={style.textBox}>{element.name}</p>
 
                     </div>
-                    <Link  to={`/${element.name}`} className={style.imgRight} style={bg_img}  ></Link>
+                    <div  onClick={()=>handlerOpenModal(element)}  className={style.imgRight} style={bg_img}  ></div>
                 </div> 
             :  <div className={style.gift}>
-                    <Link  to={`/${element.name}`} className={style.imgLeft}  style={bg_img} ></Link>
+                    <div onClick={()=>handlerOpenModal(element)} className={style.imgLeft}  style={bg_img} ></div>
                     <div className={style.nameLeft}>
-                        <p className={style.textBox}>{element.name}</p>
+                        <p   className={style.textBox}>{element.name}</p>
                     </div>
                 </div>
         }
@@ -40,27 +41,50 @@ const Item = ({orentation,element}) =>{
 export default function GiftList() {
     const [state, setState ] = useState(true)
     const [list, setList] = useState([])
+    /*modal */
+    const [isOpen,setOpen] = useState(false)
+    const [itemSelected,setItemSelected] = useState({})
+    /*obtener datos para le modal */
+    /*abrir y cerrar el modal */
+    const handlerOpenModal = (item) =>{
+        setItemSelected(item)
+
+        setOpen(true)
+    }
+
+    const handlerCloseModal = () =>{
+        setItemSelected({})
+
+        setOpen(false)
+    }
 
     useEffect(()=>{
         GET_LIST(setList)
     },[])
     
     if (!state) {
-        return <Loader />
+        return <Loader /> 
     }
   return (
     <div className={style.pageGift}>
+        
+        <Gift isOpen={isOpen} item={itemSelected} handlerCloseModal={handlerCloseModal}/>
+        <div className={style.containerBack}>
+            <Link  to={'/'}  ><div className={style.back}></div></Link>
+
+        </div>
         <p className={style.msg}>"Si deseas hacernos un regalo, por favor <br />selecciona uno de la lista."</p>
         <div className={style.listGift}>
             {
                 list.length 
                     ? list.map((element,index)=>{
                         
-                    return <Item key={index} orentation={index % 2 === 0 ? 'right' : 'left' } element={element}/>
+                    return <Item key={index} handlerOpenModal={handlerOpenModal} orentation={index % 2 === 0 ? 'right' : 'left' } element={element}/>
                 }) : "cargando"
             }
         </div>
         <p className={style.alias}>alias: <br /> "Casamiento.vya"</p>
+
     </div>
   )
 }

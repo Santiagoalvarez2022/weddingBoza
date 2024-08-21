@@ -4,8 +4,23 @@
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    color: #ffffff;
 } 
 
+.containerBack{
+    margin-left: 1em; 
+    margin-top: 1.5em;
+
+}
+
+.back{
+    height: 2em;
+    width: 2em;
+
+    background-image: url('./assets/items_img/arrrowback.png');
+    background-position: center center;
+    background-size: contain;
+}
 
 .msg, .alias{
     color: #fff;
@@ -17,24 +32,24 @@
 
 .msg{
     font-size: 1em;
-    margin-top: 5vh;
 }
+
+
 .alias{
-    margin-bottom: 1vh;
     margin-top: 3vh;
     font-size: 1.2em;
 }
 
 .listGift{
-    height: 80vh;
+    height: 67vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
     padding-inline: 3em; 
     padding-top: 1em;
-}
-
+} 
+ 
 
 
 
@@ -79,7 +94,6 @@
     align-items: center;
     border-left:#ffffff solid .05em  ;
     box-sizing: border-box;
-    animation: beat 1s infinite;
     background-size: 6.5vh;
 }
 
@@ -88,7 +102,6 @@
     align-items: center;
     box-sizing: border-box;
     background-size: 6.5vh;
-    animation: beat 1s infinite;
 } 
 
 .nameLeft, .nameRight{
@@ -115,16 +128,4 @@
     width: 100%;
     align-items: end;
     justify-content: center;
-}
-
-
-@keyframes beat {
-    0%, 100% {
-        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.289));
-
-    }
-    50% {
-        filter: drop-shadow(0 0 .3em rgba(255, 255, 255, 0.400));
-
-    }
 }
