@@ -85,15 +85,24 @@
     height: 100%;
     border-radius: 0 2em 2em 0;
 }
-
+ 
+.containerReference{
+    display: flex;
+    justify-content: end;
+}
 .reference{
     color: #FACC5A;
-
     font-size: 1.2em; 
     font-weight: 500;
+    width: 4em; 
     width: 100%;
     text-align: end;
+    border: #FACC5A 1px solid ;
+    border-radius: .5em;
+    padding: .5em;
 }  
+
+
 
 .containerBtn{
     width: 100%;

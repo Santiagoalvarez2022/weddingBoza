@@ -1,20 +1,33 @@
-import { useState } from 'react'
 import style from './App.module.css'
 import Chronometer from  './components/Chronometer/Chronometer'
+import { useEffect, useState } from 'react';
+import imageUrl from './assets/weddingBoza.svg'
+import Loader from './components/Loader'
 
 function App() {
+  const [imageLoaded, setImageLoaded] = useState(false);
 
+  useEffect(() => {
+    const img = new Image();
+    img.src = imageUrl; 
+    img.onload = () => setImageLoaded(true);
+  }, []);
+ 
 
   return (
     <div className={style.containerPage}>
-     
-      <div className={style.pageOne}>
+      {!imageLoaded && <Loader />}
+      {imageLoaded && <div className={style.pageOne}
+       style={{
+        backgroundImage: `url(${imageUrl})`, 
+      }}
+      >
         <div className={style.title}>
           <h1 className={style.names}>Valen y Alex</h1>
         </div>
         <Chronometer />
         
-      </div>
+      </div>}
      
     </div>
   )

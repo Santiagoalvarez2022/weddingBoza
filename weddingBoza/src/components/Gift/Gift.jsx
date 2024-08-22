@@ -81,9 +81,14 @@ import { useNavigate } from "react-router-dom";
           <br />
           <hr />
           <br /> 
-         { item.link &&  <a  href={item.link}><p className={style.reference}>Referencia</p></a>}
-          <br /> 
-        
+       
+          <div className={style.containerReference}>
+
+            { item.link &&  <a  href={item.link}><p className={style.reference}>Referencia</p></a>}
+            </div>
+
+
+
           <p className={style.text}>Cantidad : {item.amount}</p>
           {parseInt(item.divide ) > 1 && <>
             <p className={style.text} >Gasto compartido entre : {item.Committed}/{item.divide}</p> 

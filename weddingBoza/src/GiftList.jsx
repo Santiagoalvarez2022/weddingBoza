@@ -71,7 +71,7 @@ export default function GiftList() {
     }
     
     
-    if (!state) {
+    if (!state) { 
         return <Loader /> 
     }
   return (
