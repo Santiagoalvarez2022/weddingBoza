@@ -76,6 +76,10 @@
     width:70%;
     border-radius: 2em 0 0 2em;
     padding-inline-start: 1em;
+    user-select: none;
+    -webkit-user-select: none; /* Para navegadores basados en WebKit */
+    -moz-user-select: none;    /* Para Firefox */
+    -ms-user-select: none;     /* Para Internet Explorer/Edge */
 
 }
 .sendBtn{
