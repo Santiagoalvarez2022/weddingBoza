@@ -52,11 +52,9 @@ export default function GiftList() {
     /* */
     const getGiftLis = async() => {
         const result = await GET_LIST(navigate)
-        console.log(result);
         
         if (result.status === 200) {
             setList(result.data)
-            console.log("se cargo la lista ");
             setState(true)
             return
         }
@@ -65,7 +63,6 @@ export default function GiftList() {
     }
     useEffect(()=>{
         // GET_LIST(setList)
-        console.log("ejecuto la funcion para cargar la lista ");
         
         getGiftLis()
     },[])
@@ -81,7 +78,6 @@ export default function GiftList() {
         setOpen(true)
     }
 
-    console.log("items selecionado", itemSelected);
     
 
 

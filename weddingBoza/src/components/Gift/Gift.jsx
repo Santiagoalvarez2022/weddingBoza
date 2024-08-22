@@ -14,7 +14,6 @@ const Response = () =>{
   
 export default function Gift({isOpen,item,handlerCloseModal}) {
 
-    console.log("vista gift item seleciondo", item);
   const [loaderResponse,setResponseLoader] = useState(true)
 
     let navigate = useNavigate();
@@ -39,11 +38,9 @@ export default function Gift({isOpen,item,handlerCloseModal}) {
 
   const sendData = async() =>{
     if (input.trim()==="") return 
-    console.log(input);
     
     try {
       const result = await UPDATE_ITEM(item,input)
-      console.log("result", result);
       
       if (result.status === 200){
         setResponseLoader(false)
@@ -71,9 +68,9 @@ export default function Gift({isOpen,item,handlerCloseModal}) {
   return (
     <div className={style.modalOverlay}  >
       <div className={style.modalContent}>
-        { !loaderResponse &&  <div className={style.containerBtn}>
+         <div className={style.containerBtn}>
           <div className={style.btnClose} onClick={()=>handlerCloseModal()} ></div>
-          </div>}
+          </div>
         {item.msg && <p>Este regalo ya fue elegido</p>}
         {
           !item.msg && loaderResponse && <> 
@@ -135,31 +132,3 @@ export default function Gift({isOpen,item,handlerCloseModal}) {
 
   ) 
 }
- /*const sendData = async(data) =>{
-    //evaluo que se halla seleccionado un invitado para enviar la info
-
-    if (selectedGuests) {
-      setLoading(true)
-
-    try {
-      const result = await confirm_guest(data.id)
-
-      if (result.status === 200){
-        setOpen(true)
-      }
-
-    } catch (error) {
-
-      console.log("ocurrio un error", error);
-      navigate("/Error");
-    } finally {
-      setLoading(false)
-    }
-
-    setSelectedGuests(null)
-    setData("") 
-    } else{
-
-    }
-    
-  }  */

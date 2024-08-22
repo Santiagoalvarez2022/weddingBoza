@@ -51,10 +51,8 @@ export const GET_LIST = async( navigate) =>{
 export const GET_ITEM = async( id,navigate) =>{
     try {
         const result = await axios(`https://sheet.best/api/sheets/be35202d-7b9b-4682-a82c-a30f9a9ee3b7/id/${id}`)
-        console.log('resultado ', result);
 
         if (result.data[0].status !== "" ) {
-            console.log("entre");
             result.data[0].msg= "Este regalo ya fue selecionado"  
             return result
         }
