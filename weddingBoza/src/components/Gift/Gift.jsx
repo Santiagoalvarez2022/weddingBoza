@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
-import Navegation from '../Navegation/Navegation'
 import style from './Gift.module.css'
 import regalo from '../../assets/items_img/regalo.svg'
 import { UPDATE_ITEM } from '../../services/getItems'
 import { useNavigate } from "react-router-dom";
 
-//modale para cuando se elige un regalo
+
+const Response = () =>{
+  return <div>
+  </div>
+}
+
 
   
-  export default function Gift({isOpen,item,handlerCloseModal}) {
+export default function Gift({isOpen,item,handlerCloseModal}) {
+
+    console.log("vista gift item seleciondo", item);
+  const [loaderResponse,setResponseLoader] = useState(true)
+
     let navigate = useNavigate();
   
   const bg_img = {
@@ -35,13 +43,14 @@ import { useNavigate } from "react-router-dom";
     
     try {
       const result = await UPDATE_ITEM(item,input)
-
+      setResponseLoader(false)
       console.log("result", result);
       
       if (result.status === 200){
         /*MOSTRAR MENSAJE DE EXITO */
+        handlerCloseModal(false)
+        
       }
-      handlerCloseModal()
 
     } catch (error) {
 
@@ -58,12 +67,17 @@ import { useNavigate } from "react-router-dom";
   
 
   if (!isOpen) return null;
+  //componente para  esperar la respuesta si salio bien el update del item
+
   return (
     <div className={style.modalOverlay}  >
       <div className={style.modalContent}>
-          <div className={style.containerBtn}>
+        { loaderResponse &&  <div className={style.containerBtn}>
           <div className={style.btnClose} onClick={()=>handlerCloseModal()} ></div>
-          </div>
+          </div>}
+        {item.msg && <p>Este regalo ya fue elegido</p>}
+        {
+          !item.msg && loaderResponse && <> 
         <div>
           <div className={style.containerTitle}>
             <div style={bg_img} className={style.iconGift}></div>
@@ -102,8 +116,21 @@ import { useNavigate } from "react-router-dom";
           <input onChange={handlerInput}  value={input} className={style.inputName} type="text" placeholder='Nombre y Apellido' />
           <div  className={style.sendBtn} onClick={()=>sendData()}>Enviar</div>
         </form>
-            
+        
+      
+          </> 
+
+        }
+          {
+          !loaderResponse &&<>
+           <div className={style.responseLoader}>
+
+          </div>
+            <p className={style.loaderText}>Cargando...</p>
+          </>
+          }
       </div>
+
     </div>
 
   ) 

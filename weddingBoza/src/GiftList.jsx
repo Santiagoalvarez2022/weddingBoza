@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Loader from './components/Loader'
 import style from './GiftList.module.css'
-import { GET_LIST } from './services/getItems'
+import { GET_ITEM, GET_LIST } from './services/getItems'
 import regalo from './assets/items_img/regalo.svg'
 import {Link} from 'react-router-dom'
 //modal gift
 import Gift from './components/Gift/Gift'
+import { useNavigate } from "react-router-dom";
 
 const Item = ({orentation,element,handlerOpenModal}) =>{
     const bg_img = {
@@ -16,7 +17,7 @@ const Item = ({orentation,element,handlerOpenModal}) =>{
     
   
 
-    return    <div  className={style.item}> 
+    return  <div  className={style.item}> 
         {
             orentation === 'right' 
             ? <div className={style.gift}>
@@ -24,10 +25,10 @@ const Item = ({orentation,element,handlerOpenModal}) =>{
                         <p className={style.textBox}>{element.name}</p>
 
                     </div>
-                    <div  onClick={()=>handlerOpenModal(element)}  className={style.imgRight} style={bg_img}  ></div>
+                    <div  onClick={()=>handlerOpenModal(element.id)}  className={style.imgRight} style={bg_img}  ></div>
                 </div> 
             :  <div className={style.gift}>
-                    <div onClick={()=>handlerOpenModal(element)} className={style.imgLeft}  style={bg_img} ></div>
+                    <div onClick={()=>handlerOpenModal(element.id)} className={style.imgLeft}  style={bg_img} ></div>
                     <div className={style.nameLeft}>
                         <p   className={style.textBox}>{element.name}</p>
                     </div>
@@ -39,7 +40,9 @@ const Item = ({orentation,element,handlerOpenModal}) =>{
 
  
 export default function GiftList() {
-    const [state, setState ] = useState(true)
+    let navigate = useNavigate();
+
+    const [state, setState ] = useState(false)
     const [list, setList] = useState([])
     /*modal */
     const [isOpen,setOpen] = useState(false)
@@ -47,26 +50,45 @@ export default function GiftList() {
     /*obtener datos para le modal */
     /*abrir y cerrar el modal */
     /* */
+    const getGiftLis = async() => {
+        const result = await GET_LIST(navigate)
+        console.log(result);
+        
+        if (result.status === 200) {
+            setList(result.data)
+            console.log("se cargo la lista ");
+            setState(true)
+            return
+        }
+        navigate('/error')
+        
+    }
     useEffect(()=>{
-        GET_LIST(setList)
+        // GET_LIST(setList)
+        console.log("ejecuto la funcion para cargar la lista ");
+        
+        getGiftLis()
     },[])
 
-        console.log('lista de regalo en componente', list);
         
-
-
-    const handlerOpenModal = (item) =>{
-        setItemSelected(item)
-
+    const handlerOpenModal = async(id) =>{
+        // setItemSelected(item)
+        /*obtengo ese registro para mantenerme siempre actualizado los estados */
+        const result = await GET_ITEM(id,navigate)
+        
+        setItemSelected(result.data[0])
+        
         setOpen(true)
     }
 
+    console.log("items selecionado", itemSelected);
+    
 
 
     const handlerCloseModal = () =>{
+        setState(false)
         setItemSelected({})
-        GET_LIST(setList)
-        
+        getGiftLis()
         setOpen(false)
     }
     
@@ -74,6 +96,7 @@ export default function GiftList() {
     if (!state) { 
         return <Loader /> 
     }
+
   return (
     <div className={style.pageGift}>
         

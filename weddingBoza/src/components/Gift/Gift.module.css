@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+
 .modalOverlay{
     position: fixed;
     top: 0;
@@ -116,4 +118,31 @@
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+
+.responseLoader{
+    height: 12em;
+    width:  12em;
+    background-image: url('../../assets/erizoloader.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: beat 1s infinite ease-in-out;
+}
+
+.loaderText{
+    font-family: "Bodoni Moda SC", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+}
+
+@keyframes beat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
 }

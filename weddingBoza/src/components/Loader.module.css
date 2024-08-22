@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
 
 .erizo{
     height: 8em;
@@ -12,6 +13,10 @@
 
 .loader{
     font-size: .8em;
+    font-family: "Bodoni Moda SC", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+ 
 }
 
 @keyframes beat {

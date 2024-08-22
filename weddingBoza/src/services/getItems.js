@@ -1,31 +1,3 @@
-/*[13:02, 1/8/2024] Alex Boza: alexboza.asd@gmail.com
-[13:02, 1/8/2024] Alex Boza: contraseña es
-[13:02, 1/8/2024] Alex Boza: Nalaychucho1
-import axios from "axios"
-
-
-//OBTENER LISTA DE REGALOS 
-export const get_gifts = async(setGift,navigate) =>{
-    //setGift es una funcion que modifica el estado del componente 
-    try {
-        const {data} = await axios("https://sheet.best/api/sheets/528ef662-8551-4ab5-8f04-f0f4e964b1b0?raw=1");
-
-        //solo enviaremos aquellos elementos cuyo status sea igual a "no" es decir que aun falta elegir.
-        const  gift_list = data.filter((g)=> g.selected === "no" && g)
-        setGift(gift_list)
-
-    } catch (error) {
-        //validar y arrojar error
-        console.log("Error en la peticion de lista de regalos", {error:error.message})
-        navigate("/Error");
-        throw Error("Ocurrio un error")
-    }
-}
-    https://docs.google.com/spreadsheets/d/10YXUiHzG0wEo4fy4P4Hw3AsKdMWQlkXPeNVmzm-x0DA
-
-*/
-
-/*obtner la imagen aca para enviar con cada objeto  */
 
 import axios from 'axios'
 import tv from '../assets/items_img/tv.svg'
@@ -59,42 +31,47 @@ const icons = {
 } 
 
 
-export const GET_LIST = async(setList, navigate) =>{
+export const GET_LIST = async( navigate) =>{
     try {
-        const {data} = await axios('https://sheet.best/api/sheets/be35202d-7b9b-4682-a82c-a30f9a9ee3b7?_raw=1')
-        //añado las imagenes a los items 
-
-        /*tengo que validar que solo me traiga aquellos que no tienen un invitado que seleciono ese regalo   */
-        let newData = data.filter(e => e.status !== 'completed')
-        newData.forEach((item)=>{
+        const result = await axios('https://sheet.best/api/sheets/be35202d-7b9b-4682-a82c-a30f9a9ee3b7?_raw=1')
+        result.data = result.data.filter(e => e.status !== 'completed')
+        result.data.forEach((item)=>{
             if (item.icon) {
                 item.img = icons[item.icon]                
             } 
         });
-        console.log(newData);
-            
-        setList(newData)
-  
-            
-  
-  
+        return  result
     } catch (error) {
-        
+        console.log("Error en la peticion de lista de regalos", {error:error.message})
+        navigate("/Error");
+        throw Error("Error en la peticion de lista de regalos")
     }
 }
 
-/* Necesito actualizar la lista de regalo, 
- Si la persona se compromete a elegir ese regalo, 
- Si la cantidada del regalo es 1,
+export const GET_ITEM = async( id,navigate) =>{
+    try {
+        const result = await axios(`https://sheet.best/api/sheets/be35202d-7b9b-4682-a82c-a30f9a9ee3b7/id/${id}`)
+        console.log('resultado ', result);
 
- Coloco el nombre del invitado y 
-*/
+        if (result.data[0].status !== "" ) {
+            console.log("entre");
+            result.data[0].msg= "Este regalo ya fue selecionado"  
+            return result
+        }
+        if (result.data[0].icon) {
+            result.data[0].img = icons[result.data[0].icon]                
+        } 
+        return  result
+    } catch (error) {
+        console.log("Error al obtener un item por id", {error:error.message})
+        navigate("/error");
+        throw Error("Error en la peticion de lista de regalos")
+    }
+}
 
 
 export const UPDATE_ITEM = async(item, guest) =>{
-    let UpdateItem = {
-        status : 'prueba'
-    }
+    let UpdateItem = {}
     /*CASOS DE SELECION 
         CANTIDAD     DIVIDE
         1           1    EJ SET BAÑO  *
@@ -103,10 +80,7 @@ export const UPDATE_ITEM = async(item, guest) =>{
     
     */
     try {   
-
-       
         if(parseInt(item.amount) > 1 && parseInt(item.divide ) === 1){
-            console.log("N 1");
             UpdateItem.amount = item.amount - 1
             UpdateItem.Guests = item.Guests + ' ' + guest;
             
@@ -116,8 +90,7 @@ export const UPDATE_ITEM = async(item, guest) =>{
             }
         }
         else if (parseInt(item.amount) === 1 && parseInt(item.divide )> 1) {
-            console.log("1 N");
-            UpdateItem.Committed = item.Committed + 1;
+            UpdateItem.Committed = parseInt(item.Committed) + 1;
             UpdateItem.Guests = item.Guests + ' ' + guest;
             if (parseInt(UpdateItem.Committed ) === parseInt(item.divide)) {
                 UpdateItem.status = 'completed'
@@ -125,26 +98,15 @@ export const UPDATE_ITEM = async(item, guest) =>{
             
         } 
         else if (parseInt(item.divide) === 1 && parseInt(item.amount) === 1) {
-            console.log("1 1");
-
-            
             /*un elemento que puede ser solicitado por un invitado */
             UpdateItem.Guests = guest;
             if (parseInt(item.amount) === 1 ) {
-                console.log("entre 2");
 
                 UpdateItem.status = 'completed'
             } 
         } 
-
-
-
-
-        // //modifico lista
         const data = await axios.patch(`https://sheet.best/api/sheets/be35202d-7b9b-4682-a82c-a30f9a9ee3b7/${item.id}`,UpdateItem)
         return data
-        // return {status:200}
-
     } catch (error) {
         console.log("Error en la modificacion de lista de regalos ", {error:error.message})
       
