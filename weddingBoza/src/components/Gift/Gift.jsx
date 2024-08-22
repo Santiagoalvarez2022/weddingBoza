@@ -43,13 +43,12 @@ export default function Gift({isOpen,item,handlerCloseModal}) {
     
     try {
       const result = await UPDATE_ITEM(item,input)
-      setResponseLoader(false)
       console.log("result", result);
       
       if (result.status === 200){
+        setResponseLoader(false)
         /*MOSTRAR MENSAJE DE EXITO */
-        handlerCloseModal(false)
-        
+
       }
 
     } catch (error) {
@@ -72,7 +71,7 @@ export default function Gift({isOpen,item,handlerCloseModal}) {
   return (
     <div className={style.modalOverlay}  >
       <div className={style.modalContent}>
-        { loaderResponse &&  <div className={style.containerBtn}>
+        { !loaderResponse &&  <div className={style.containerBtn}>
           <div className={style.btnClose} onClick={()=>handlerCloseModal()} ></div>
           </div>}
         {item.msg && <p>Este regalo ya fue elegido</p>}
@@ -107,7 +106,7 @@ export default function Gift({isOpen,item,handlerCloseModal}) {
           {parseInt(item.divide ) > 1 && <>
             <p className={style.text} >Gasto compartido entre : {item.Committed}/{item.divide}</p> 
             <br />
-            <p>Envianos tu nombre si te gustaría compartir este regalo con otros invitados </p>  
+            <p> “En caso de querer hacer el regalo completo envíanos un mensaje!”</p>  
           </>
            }
         </div>
@@ -126,7 +125,8 @@ export default function Gift({isOpen,item,handlerCloseModal}) {
            <div className={style.responseLoader}>
 
           </div>
-            <p className={style.loaderText}>Cargando...</p>
+            <p className={style.loaderText}>¡Gracias por tu regalo! <br />
+            El camino es mas divertido al recorrerlo juntos ♡</p>
           </>
           }
       </div>

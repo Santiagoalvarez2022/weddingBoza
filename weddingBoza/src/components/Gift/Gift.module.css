@@ -132,21 +132,12 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
-    animation: beat 1s infinite ease-in-out;
 }
 
 .loaderText{
     font-family: "Bodoni Moda SC", serif;
     font-optical-sizing: auto;
     font-style: normal;
+    font-weight: 600; 
 
-}
-
-@keyframes beat {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
 }
