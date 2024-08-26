@@ -97,7 +97,9 @@ export const UPDATE_ITEM = async(item, guest) =>{
         } 
         else if (parseInt(item.divide) === 1 && parseInt(item.amount) === 1) {
             /*un elemento que puede ser solicitado por un invitado */
-            UpdateItem.Guests = guest;
+            UpdateItem.Guests = item.Guests + ' ' + guest;
+            UpdateItem.amount = item.amount - 1
+
             if (parseInt(item.amount) === 1 ) {
 
                 UpdateItem.status = 'completed'
