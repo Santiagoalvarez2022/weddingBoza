@@ -29,12 +29,11 @@ const icons = {
     tablaplancha,
     toallas
 } 
-//https://sheet.best/api/sheets/c44f7c96-c8be-4915-b17a-1d7a1759305e
 
 
 export const GET_LIST = async( navigate) =>{
     try {
-        const result = await axios('https://sheet.best/api/sheets/be35202d-7b9b-4682-a82c-a30f9a9ee3b7?_raw=1')
+        const result = await axios('https://sheet.best/api/sheets/c44f7c96-c8be-4915-b17a-1d7a1759305e?_raw=1')
         result.data = result.data.filter(e => e.status !== 'completed')
         result.data.forEach((item)=>{
             if (item.icon) {
@@ -51,7 +50,7 @@ export const GET_LIST = async( navigate) =>{
 
 export const GET_ITEM = async( id,navigate) =>{
     try {
-        const result = await axios(`https://sheet.best/api/sheets/be35202d-7b9b-4682-a82c-a30f9a9ee3b7/id/${id}`)
+        const result = await axios(`https://sheet.best/api/sheets/c44f7c96-c8be-4915-b17a-1d7a1759305e/id/${id}`)
 
         if (result.data[0].status !== "" ) {
             result.data[0].msg= "Este regalo ya fue selecionado"  
@@ -106,7 +105,7 @@ export const UPDATE_ITEM = async(item, guest) =>{
                 UpdateItem.status = 'completed'
             } 
         } 
-        const data = await axios.patch(`https://sheet.best/api/sheets/be35202d-7b9b-4682-a82c-a30f9a9ee3b7/${item.id}`,UpdateItem)
+        const data = await axios.patch(`https://sheet.best/api/sheets/c44f7c96-c8be-4915-b17a-1d7a1759305e/${item.id}`,UpdateItem)
         return data
     } catch (error) {
         console.log("Error en la modificacion de lista de regalos ", {error:error.message})
