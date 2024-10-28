@@ -44,7 +44,7 @@
 
 .alias{
 
-    margin-top: 3vh;
+    margin-top: 1vh;
     font-size: 1.2em;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .listGift{
-    height: 60vh;
+    height: 45vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,7 +86,7 @@
 }
 
 .gift{
-    height: 10vh;
+    height: 8vh;
     width: 100%;
     color: #ffffff;  
     display: grid;
@@ -97,17 +97,16 @@
 .imgRight,.imgLeft, .nameLeft,.nameRight{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .imgRight{
     align-items: center;
-    border-left:#ffffff solid .05em  ;
-    box-sizing: border-box;
+     box-sizing: border-box;
     background-size: 6.5vh;
 }
 
 .imgLeft{
-    border-right:#ffffff solid .05em ;
     align-items: center;
     box-sizing: border-box;
     background-size: 6.5vh;
@@ -122,16 +121,13 @@
 }
 
 .nameRight{
-    border-right:#ffffff solid .05em ;
 
 }
 .nameLeft{
-    border-left:#ffffff solid .05em ;
-    
+
 }
 
 .textBox{
-    border-bottom: #ffffff solid .05em;
     height: 50%;
     display: flex;
     width: 100%;

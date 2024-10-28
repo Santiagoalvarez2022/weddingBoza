@@ -17,7 +17,7 @@ const Item = ({orentation,element,handlerOpenModal}) =>{
     
   
 
-    return  <div  className={style.item}> 
+    return  <div  className={style.item} onClick={()=>handlerOpenModal(element.id)} > 
         {
             orentation === 'right' 
             ? <div className={style.gift}>
@@ -25,10 +25,10 @@ const Item = ({orentation,element,handlerOpenModal}) =>{
                         <p className={style.textBox}>{element.name}</p>
 
                     </div>
-                    <div  onClick={()=>handlerOpenModal(element.id)}  className={style.imgRight} style={bg_img}  ></div>
+                    <div   className={style.imgRight} style={bg_img}  ></div>
                 </div> 
             :  <div className={style.gift}>
-                    <div onClick={()=>handlerOpenModal(element.id)} className={style.imgLeft}  style={bg_img} ></div>
+                    <div className={style.imgLeft}  style={bg_img} ></div>
                     <div className={style.nameLeft}>
                         <p   className={style.textBox}>{element.name}</p>
                     </div>
@@ -107,7 +107,7 @@ export default function GiftList() {
                 list.length 
                     ? list.map((element,index)=>{
                         
-                    return <Item key={index} handlerOpenModal={handlerOpenModal} orentation={index % 2 === 0 ? 'right' : 'left' } element={element}/>
+                    return <Item key={index} handlerOpenModal={handlerOpenModal} orentation={index % 2 === 0 ? 'left' : 'left' } element={element}/>
                 }) : "cargando"
             }
         </div>
