@@ -30,10 +30,10 @@ const icons = {
     toallas
 } 
 
-
+//https://api.sheetbest.com/sheets/8689dbef-899e-4339-b1da-af98bb4715cf
 export const GET_LIST = async( navigate) =>{
     try {
-        const result = await axios('https://sheet.best/api/sheets/c44f7c96-c8be-4915-b17a-1d7a1759305e?_raw=1')
+        const result = await axios('https://api.sheetbest.com/sheets/8689dbef-899e-4339-b1da-af98bb4715cf?_raw=1')
         result.data = result.data.filter(e => e.status !== 'completed')
         result.data.forEach((item)=>{
             if (item.icon) {
@@ -50,7 +50,7 @@ export const GET_LIST = async( navigate) =>{
 
 export const GET_ITEM = async( id,navigate) =>{
     try {
-        const result = await axios(`https://sheet.best/api/sheets/c44f7c96-c8be-4915-b17a-1d7a1759305e/id/${id}`)
+        const result = await axios(`https://api.sheetbest.com/sheets/8689dbef-899e-4339-b1da-af98bb4715cf/id/${id}`)
 
         if (result.data[0].status !== "" ) {
             result.data[0].msg= "Este regalo ya fue selecionado"  
