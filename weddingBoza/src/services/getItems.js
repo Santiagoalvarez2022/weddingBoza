@@ -72,11 +72,9 @@ export const UPDATE_ITEM = async(item, guest) =>{
     let UpdateItem = {}
     /*CASOS DE SELECION 
         CANTIDAD     DIVIDE
-        1           1    EJ SET BAÑO  *
-        1           N    EJ MESA      *
-        N           1    EJ ALMOHADAS
-    
-    */
+
+
+        */
     try {   
         if(parseInt(item.amount) > 1 && parseInt(item.divide ) === 1){
             UpdateItem.amount = item.amount - 1
@@ -105,7 +103,7 @@ export const UPDATE_ITEM = async(item, guest) =>{
                 UpdateItem.status = 'completed'
             } 
         } 
-        const data = await axios.patch(`https://sheet.best/api/sheets/c44f7c96-c8be-4915-b17a-1d7a1759305e/${item.id}`,UpdateItem)
+        const data = await axios.patch(`https://api.sheetbest.com/sheets/8689dbef-899e-4339-b1da-af98bb4715cf/${item.id}`,UpdateItem)
         return data
     } catch (error) {
         console.log("Error en la modificacion de lista de regalos ", {error:error.message})
