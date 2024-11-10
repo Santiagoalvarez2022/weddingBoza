@@ -39,10 +39,11 @@ export default function Gift({isOpen,item,handlerCloseModal}) {
   const sendData = async() =>{
     if (input.trim()==="") return 
     
-    console.log("entre a enviar la invitacion");
+    console.log("envio de update de regalo");
     
     try {
       const result = await UPDATE_ITEM(item,input)
+      
       
       if (result.status === 200){
 

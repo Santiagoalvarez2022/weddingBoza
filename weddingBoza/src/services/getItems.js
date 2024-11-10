@@ -75,8 +75,14 @@ export const UPDATE_ITEM = async(item, guest) =>{
 
 
         */
+
+        console.log(item, 'item recibido', guest, 'invitado');
+        
     try {   
         if(parseInt(item.amount) > 1 && parseInt(item.divide ) === 1){
+            //caso de regalo con mas de uno en cantidad y que no se divide el gasto
+            console.log('entre aqui 1');
+
             UpdateItem.amount = item.amount - 1
             UpdateItem.Guests = item.Guests + ' ' + guest;
             
@@ -85,7 +91,10 @@ export const UPDATE_ITEM = async(item, guest) =>{
                 UpdateItem.status = 'completed'
             }
         }
+
         else if (parseInt(item.amount) === 1 && parseInt(item.divide )> 1) {
+            console.log('entre aqui 2');
+
             UpdateItem.Committed = parseInt(item.Committed) + 1;
             UpdateItem.Guests = item.Guests + ' ' + guest;
             if (parseInt(UpdateItem.Committed ) === parseInt(item.divide)) {
@@ -95,11 +104,14 @@ export const UPDATE_ITEM = async(item, guest) =>{
         } 
         else if (parseInt(item.divide) === 1 && parseInt(item.amount) === 1) {
             /*un elemento que puede ser solicitado por un invitado */
+            console.log('entre aqui 3');
+            
             UpdateItem.Guests = item.Guests + ' ' + guest;
             UpdateItem.amount = item.amount - 1
 
             if (parseInt(item.amount) === 1 ) {
-
+                console.log('actualizo estado');
+                
                 UpdateItem.status = 'completed'
             } 
         } 
