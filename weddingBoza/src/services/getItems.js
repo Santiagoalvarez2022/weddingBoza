@@ -103,6 +103,10 @@ export const UPDATE_ITEM = async(item, guest) =>{
                 UpdateItem.status = 'completed'
             } 
         } 
+
+        console.log(UpdateItem, 'item actualizados');
+        
+
         const data = await axios.patch(`https://api.sheetbest.com/sheets/8689dbef-899e-4339-b1da-af98bb4715cf/${item.id}`,UpdateItem)
         return data
     } catch (error) {
