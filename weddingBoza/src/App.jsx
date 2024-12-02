@@ -1,7 +1,7 @@
 import style from './App.module.css'
 import Chronometer from  './components/Chronometer/Chronometer'
 import { useEffect, useState } from 'react';
-import imageUrl from './assets/weddingBoza.svg'
+import imageUrl from './assets/couple.svg'
 import Loader from './components/Loader'
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
       }}
       >
         <div className={style.title}>
-          <h1 className={style.names}>Valen y Alex</h1>
+          <h1 className={style.names}>Sofía y Nahuel</h1>
         </div>
         <Chronometer />
         

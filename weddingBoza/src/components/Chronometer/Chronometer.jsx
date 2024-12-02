@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 export default function Chronometer() {
 
-    const targetDate = new Date('November 22, 2024 09:00:00').getTime();
+    const targetDate = new Date('March 22, 2025 09:00:00').getTime();
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
 
-    useEffect(() => {
+    useEffect(() => { 
         // Función para calcular el tiempo restante
         const calculateTimeLeft = () => {
           const now = new Date().getTime();

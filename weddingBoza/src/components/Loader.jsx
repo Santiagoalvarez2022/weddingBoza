@@ -4,7 +4,7 @@ export default function Loader() {
     const styles = {
         height:"100vh",
         width : '100%',
-        background : "#15324c",
+        background : "rgba(0, 0, 0, 0.719)",
         display : 'flex',
         justifyContent : 'center',
         alignItems : 'center',
@@ -17,7 +17,6 @@ export default function Loader() {
   return (
     
     <div style={styles}> 
-      <div className={style.erizo}></div>
       <p className={style.loader}>Cargando...</p>
     </div>
   )

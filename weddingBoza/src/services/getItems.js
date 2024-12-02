@@ -30,10 +30,13 @@ const icons = {
     toallas
 } 
 
-//https://api.sheetbest.com/sheets/8689dbef-899e-4339-b1da-af98bb4715cf
+
+
+
+
 export const GET_LIST = async( navigate) =>{
     try {
-        const result = await axios('https://api.sheetbest.com/sheets/8689dbef-899e-4339-b1da-af98bb4715cf?_raw=1')
+        const result = await axios(`${import.meta.env.VITE_API_URL}?_raw=1`)
         result.data = result.data.filter(e => e.status !== 'completed')
         result.data.forEach((item)=>{
             if (item.icon) {
@@ -50,7 +53,7 @@ export const GET_LIST = async( navigate) =>{
 
 export const GET_ITEM = async( id,navigate) =>{
     try {
-        const result = await axios(`https://api.sheetbest.com/sheets/8689dbef-899e-4339-b1da-af98bb4715cf/id/${id}`)
+        const result = await axios(`${import.meta.env.VITE_API_URL}/id/${id}`)
 
         if (result.data[0].status !== "" ) {
             result.data[0].msg= "Este regalo ya fue selecionado"  
@@ -119,7 +122,7 @@ export const UPDATE_ITEM = async(item, guest) =>{
         console.log(UpdateItem, 'item actualizados');
         
 
-        const data = await axios.patch(`https://api.sheetbest.com/sheets/8689dbef-899e-4339-b1da-af98bb4715cf/${item.id}`,UpdateItem)
+        const data = await axios.patch(`${import.meta.env.VITE_API_URL}/${item.id}`,UpdateItem)
         return data
     } catch (error) {
         console.log("Error en la modificacion de lista de regalos ", {error:error.message})

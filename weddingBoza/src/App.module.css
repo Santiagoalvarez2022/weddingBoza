@@ -36,16 +36,15 @@
   font-weight: 100;
   font-style: normal;
   letter-spacing: .2em;
-  font-size: 1.8em;
+  font-size: 1.3em;
   text-align: center;
   color: white;
 }
 
 .names{
-  filter: drop-shadow(2px 2px 1em rgba(170, 170, 170, 0.826));
-  text-shadow: #000 2px 2px;
+  filter: drop-shadow(0em  0em 2px rgb(0, 0, 0));
 } 
 
 .pageTwo{
   height: 100vh;
-}
+} 
