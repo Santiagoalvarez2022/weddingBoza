@@ -13,6 +13,6 @@ export default function ErrorPage() {
     textAlign : 'center',
 }
   return (
-    <div style={styles} >Error, por favor envia un mensaje <br /> a Valen y Alex</div>
+    <div style={styles} >Error, por favor envia un mensaje <br /> a Sofía y Nahuel</div>
   )
 }
